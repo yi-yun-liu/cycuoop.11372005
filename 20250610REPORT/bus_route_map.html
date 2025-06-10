@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9a7ffe4848946edb8255579ee728e9fd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_9a7ffe4848946edb8255579ee728e9fd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9a7ffe4848946edb8255579ee728e9fd = L.map(
+                "map_9a7ffe4848946edb8255579ee728e9fd",
+                {
+                    center: [25.04, 121.56],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_fac27b3c1a2a158957029001d068863f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fac27b3c1a2a158957029001d068863f.addTo(map_9a7ffe4848946edb8255579ee728e9fd);
+        
+    
+            var marker_4f51f44699eb6048d8a017db0036ec91 = L.marker(
+                [25.1025413796071, 121.512544103686],
+                {
+}
+            ).addTo(map_9a7ffe4848946edb8255579ee728e9fd);
+        
+    
+        var popup_fde7a15e65cae7824275ff9b93c91f07 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6ae9e65fe9021a3cbc6b0bfe0a004e1e = $(`<div id="html_6ae9e65fe9021a3cbc6b0bfe0a004e1e" style="width: 100.0%; height: 100.0%;">建民里</div>`)[0];
+                popup_fde7a15e65cae7824275ff9b93c91f07.setContent(html_6ae9e65fe9021a3cbc6b0bfe0a004e1e);
+            
+        
+
+        marker_4f51f44699eb6048d8a017db0036ec91.bindPopup(popup_fde7a15e65cae7824275ff9b93c91f07)
+        ;
+
+        
+    
+    
+            var marker_f0a7ee7be2f627b89b8c377a7a206c47 = L.marker(
+                [25.138993, 121.512427],
+                {
+}
+            ).addTo(map_9a7ffe4848946edb8255579ee728e9fd);
+        
+    
+        var popup_e63331318e375180db12ee11fea52703 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_30cd98bb844973272f8db1f365c07183 = $(`<div id="html_30cd98bb844973272f8db1f365c07183" style="width: 100.0%; height: 100.0%;">法藏寺</div>`)[0];
+                popup_e63331318e375180db12ee11fea52703.setContent(html_30cd98bb844973272f8db1f365c07183);
+            
+        
+
+        marker_f0a7ee7be2f627b89b8c377a7a206c47.bindPopup(popup_e63331318e375180db12ee11fea52703)
+        ;
+
+        
+    
+    
+            var marker_495180224fd522b3c955e9817baf5817 = L.marker(
+                [25.08235, 121.566541],
+                {
+}
+            ).addTo(map_9a7ffe4848946edb8255579ee728e9fd);
+        
+    
+        var popup_3f4860a59d81f43b80eddf9e4ede6a4f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b44828135ccfd6f892259eb0799cf85 = $(`<div id="html_4b44828135ccfd6f892259eb0799cf85" style="width: 100.0%; height: 100.0%;">捷運西湖站</div>`)[0];
+                popup_3f4860a59d81f43b80eddf9e4ede6a4f.setContent(html_4b44828135ccfd6f892259eb0799cf85);
+            
+        
+
+        marker_495180224fd522b3c955e9817baf5817.bindPopup(popup_3f4860a59d81f43b80eddf9e4ede6a4f)
+        ;
+
+        
+    
+    
+            var poly_line_dbc4acf9e3f107fff72ba117a49f52e5 = L.polyline(
+                [[25.1025413796071, 121.512544103686], [25.138993, 121.512427], [25.08235, 121.566541]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_9a7ffe4848946edb8255579ee728e9fd);
+        
+</script>
+</html>

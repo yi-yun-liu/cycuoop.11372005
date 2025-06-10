@@ -1,37 +1,41 @@
-import sys
-import io
-from datetime import datetime, timezone
-from jdcal import gcal2jd
+# 台北市公車資訊查詢應用程式主體
+import pandas as pd
 
-# 讓 stdout 使用 UTF-8 編碼，避免亂碼
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+# 載入資料：路線資料與站牌資料
+routes_df = pd.read_csv("路線資訊20250610.csv")
+stops_df = pd.read_csv("台北市_公車路線_站牌資料.csv")
 
-def time_info(input_time_str):
-    input_dt = datetime.strptime(input_time_str, "%Y-%m-%d %H:%M")
-    now = datetime.now(timezone.utc)
+# 使用者輸入出發站與目的站（皆為中文）
+def find_routes(start_stop, end_stop):
+    candidates = stops_df.groupby(['RouteUID', 'Direction']).filter(
+        lambda x: start_stop in list(x['StopNameZh']) and end_stop in list(x['StopNameZh'])
+    )
 
-    weekdays = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
-    weekday_str = weekdays[input_dt.weekday()]
+    results = []
+    for (route_uid, direction), group in candidates.groupby(['RouteUID', 'Direction']):
+        sorted_stops = group.sort_values('StopSequence')
+        stops_list = list(sorted_stops['StopNameZh'])
+        if stops_list.index(start_stop) < stops_list.index(end_stop):
+            route_name = sorted_stops['RouteNameZh'].iloc[0]
+            results.append({
+                "RouteUID": route_uid,
+                "RouteName": route_name,
+                "Direction": direction,
+                "Stops": stops_list
+            })
+    return results
 
-    input_jd = sum(gcal2jd(input_dt.year, input_dt.month, input_dt.day))
-    input_jd += (input_dt.hour + input_dt.minute / 60) / 24
+# 顯示結果
+user_start = input("請輸入出發站：")
+user_end = input("請輸入目的站：")
+routes = find_routes(user_start, user_end)
 
-    now_jd = sum(gcal2jd(now.year, now.month, now.day))
-    now_jd += (now.hour + now.minute / 60 + now.second / 3600) / 24
-
-    elapsed_julian_days = now_jd - input_jd
-
-    return weekday_str, elapsed_julian_days
-
-# 🧑‍💻 手動輸入
-user_input = input("請輸入時間（格式：YYYY-MM-DD HH:MM）：")
-
-try:
-    weekday, elapsed_days = time_info(user_input)
-    print("該日為：", weekday)
-    print("至今已過：", elapsed_days, "個太陽日")
-except Exception as e:
-    print("❌ 輸入格式錯誤，請使用 YYYY-MM-DD HH:MM，例如：2020-04-15 20:30")
-    print("錯誤訊息：", e)
-
-
+if not routes:
+    print("沒有找到符合條件的公車路線")
+else:
+    for route in routes:
+        print(f"公車路線：{route['RouteName']}（方向：{route['Direction']}）")
+        print("經過站點：")
+        for stop in route['Stops']:
+            print(f" - {stop}")
+        print("------")
